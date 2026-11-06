@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102d50">
+  <meta name="description" content="GELAÊ — bebidas na sua porta.">
+  <title>GELAÊ | Pediu, gelou!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="age-gate" id="ageGate">
+    <div class="age-card">
+      <div class="brand-mark">G<span>!</span></div>
+      <p class="eyebrow">BEM-VINDO AO GELAÊ</p>
+      <h1>Antes de entrar...</h1>
+      <p>Você tem 18 anos ou mais?</p>
+      <p class="muted small">A plataforma pode oferecer bebidas alcoólicas. A venda e a entrega de álcool são proibidas para menores de 18 anos.</p>
+      <div class="age-actions">
+        <button class="btn btn-primary" id="ageYes">Sim, tenho 18 anos ou mais</button>
+        <button class="btn btn-ghost" id="ageNo">Não</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-shell" id="appShell">
+    <aside class="sidebar">
+      <a class="brand" href="#" data-view="home"><span class="brand-icon">🍺</span><span>GELAÊ<small>PEDIU, GELOU!</small></span></a>
+      <div class="side-label">MENU PRINCIPAL</div>
+      <button class="nav-link active" data-view="home"><span>⌂</span> Início</button>
+      <button class="nav-link" data-view="orders"><span>▤</span> Meus pedidos</button>
+      <button class="nav-link" data-view="stores"><span>▦</span> Depósitos</button>
+      <button class="nav-link" data-view="profile"><span>♙</span> Meu perfil</button>
+      <div class="sidebar-bottom">
+        <div class="help-card"><span>✦</span><b>Bateu a sede?</b><p>Escolha seu depósito favorito e receba em casa.</p></div>
+        <span class="muted tiny">GELAÊ • Versão demonstrativa</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-brand" data-view="home">🍺 GELAÊ</button>
+        <div class="delivery-location"><span class="pin">⌖</span><div><small>ENTREGAR EM</small><strong id="headerAddress">Rua das Flores, 123 <span>⌄</span></strong></div></div>
+        <div class="top-actions">
+          <button class="icon-btn" id="searchFocus" aria-label="Buscar">⌕</button>
+          <button class="cart-top" id="openCart">🛒 <span id="cartCount">0</span></button>
+          <button class="avatar" data-view="profile">IM</button>
+        </div>
+      </header>
+
+      <section class="view active" id="view-home">
+        <div class="hero">
+          <div class="hero-copy"><span class="hero-tag">SUA SEDE TEM ENDEREÇO CERTO</span><h1>Você pede.<br><em>A gente gela.</em></h1><p>As bebidas que você gosta, dos depósitos da sua cidade até a sua porta.</p><button class="btn btn-yellow" id="heroExplore">Encontrar bebidas <span>→</span></button></div>
+          <div class="hero-art"><div class="ice ice-one"></div><div class="ice ice-two"></div><div class="bottle">🍺</div><div class="hero-sticker">BEM<br>GELADA!</div></div>
+          <div class="hero-wave"></div>
+        </div>
+
+        <div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="Busque cerveja, whisky, vodka, refrigerante..."><kbd>⌘ K</kbd></div>
+        <div class="section-heading"><div><p class="eyebrow">ESCOLHA O QUE VAI GELAR SEU DIA</p><h2>Categorias</h2></div><button class="text-btn" id="allCategories">Ver todas →</button></div>
+        <div class="category-grid" id="categoryGrid"></div>
+
+        <div class="section-heading stores-heading"><div><p class="eyebrow">PERTINHO DE VOCÊ</p><h2>Depósitos disponíveis</h2><p class="muted">Escolha onde quer fazer seu pedido.</p></div><button class="text-btn" data-view="stores">Ver todos →</button></div>
+        <div class="store-grid" id="storeGrid"></div>
+
+        <div class="section-heading"><div><p class="eyebrow">SELEÇÃO GELAÊ</p><h2>Mais pedidos</h2></div><span class="pill">Até 30 produtos por depósito</span></div>
+        <div class="product-grid" id="featuredGrid"></div>
+        <div class="responsible-note">🔞 Bebidas alcoólicas: venda proibida para menores de 18 anos. A idade poderá ser conferida no recebimento.</div>
+      </section>
+
+      <section class="view" id="view-stores">
+        <div class="page-heading"><p class="eyebrow">COMÉRCIO LOCAL</p><h1>Depósitos da região</h1><p class="muted">Encontre seu depósito favorito e veja o catálogo disponível.</p></div>
+        <div class="store-grid" id="allStoreGrid"></div>
+      </section>
+
+      <section class="view" id="view-store">
+        <button class="back-link" data-view="home">← Voltar para início</button>
+        <div id="storeDetail"></div>
+      </section>
+
+      <section class="view" id="view-orders">
+        <div class="page-heading"><p class="eyebrow">ACOMPANHE TUDO</p><h1>Meus pedidos</h1><p class="muted">Veja o andamento das suas compras.</p></div>
+        <div id="ordersList"></div>
+      </section>
+
+      <section class="view" id="view-profile">
+        <div class="page-heading"><p class="eyebrow">SUA CONTA</p><h1>Meu perfil</h1></div>
+        <div class="profile-card"><div class="profile-avatar">IM</div><div><h2>Olá, Italo!</h2><p class="muted">Cliente GELAÊ</p></div><span class="pill green">Conta ativa</span></div>
+        <div class="settings-list"><button>♙ <span>Dados pessoais</span><b>›</b></button><button>⌖ <span>Meus endereços</span><b>›</b></button><button>▣ <span>Formas de pagamento</span><b>›</b></button><button>◉ <span>Ajuda e suporte</span><b>›</b></button><button>ⓘ <span>Sobre o GELAÊ</span><b>›</b></button></div>
+        <div class="responsible-note">Ao comprar bebidas alcoólicas, confirme que você tem 18 anos ou mais. O entregador poderá solicitar documento oficial com foto.</div>
+      </section>
+
+      <section class="view" id="view-admin">
+        <div class="page-heading"><p class="eyebrow">ÁREA DO PARCEIRO</p><h1>Painel do depósito</h1><p class="muted">Uma prévia de como o parceiro acompanha sua operação.</p></div>
+        <div class="stats-grid"><div class="stat-card"><span>Pedidos hoje</span><b>12</b><small>+18% nesta semana</small></div><div class="stat-card"><span>Vendas do dia</span><b>R$ 684,50</b><small>Valor demonstrativo</small></div><div class="stat-card"><span>Produtos ativos</span><b>24/30</b><small>Limite da plataforma</small></div><div class="stat-card"><span>Avaliação</span><b>4,8 ★</b><small>Excelente atendimento</small></div></div>
+        <div class="admin-panel"><div class="section-heading"><h2>Pedidos recentes</h2><span class="pill">Demonstração</span></div><div id="adminOrders"></div></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="mobile-nav"><button class="active" data-view="home">⌂<small>Início</small></button><button data-view="stores">▦<small>Depósitos</small></button><button data-view="orders">▤<small>Pedidos</small></button><button data-view="profile">♙<small>Perfil</small></button></div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-head"><div><p class="eyebrow">SEU PEDIDO</p><h2>Meu carrinho <span id="drawerCount" class="pill">0 itens</span></h2></div><button class="close-btn" id="closeCart">×</button></div>
+    <div class="cart-store-note" id="cartStoreNote">Adicione produtos de um depósito para começar.</div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-bottom" id="cartBottom"></div>
+  </aside>
+
+  <div class="modal-backdrop" id="checkoutBackdrop">
+    <div class="modal">
+      <div class="modal-head"><div><p class="eyebrow">SÓ MAIS UM PASSO</p><h2>Finalizar pedido</h2></div><button class="close-btn" id="closeCheckout">×</button></div>
+      <form id="checkoutForm">
+        <label>Nome completo<input name="name" required value="Italo Mendes" placeholder="Seu nome"></label>
+        <label>Telefone<input name="phone" required placeholder="(00) 00000-0000"></label>
+        <label>Endereço de entrega<input name="address" required value="Rua das Flores, 123 - Centro" placeholder="Rua, número e bairro"></label>
+        <label>Forma de pagamento<select name="payment" required><option value="Pix">Pix</option><option value="Dinheiro na entrega">Dinheiro na entrega</option><option value="Cartão na entrega">Cartão na entrega</option></select></label>
+        <div class="checkout-summary" id="checkoutSummary"></div>
+        <button class="btn btn-primary full" type="submit">Confirmar pedido <span>→</span></button>
+        <p class="tiny muted center">A confirmação nesta versão é demonstrativa. Não há cobrança real.</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
